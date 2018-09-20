@@ -17,6 +17,7 @@
 		F05E851521541C910031A96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F05E851321541C910031A96B /* LaunchScreen.storyboard */; };
 		F05E852021541C910031A96B /* HKTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E851F21541C910031A96B /* HKTestTests.swift */; };
 		F05E852B21541C910031A96B /* HKTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E852A21541C910031A96B /* HKTestUITests.swift */; };
+		F05E853921541ED10031A96B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05E853821541ED10031A96B /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		F05E852621541C910031A96B /* HKTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F05E852A21541C910031A96B /* HKTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKTestUITests.swift; sourceTree = "<group>"; };
 		F05E852C21541C910031A96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F05E853821541ED10031A96B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		F05E853A21541ED10031A96B /* HKTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HKTest.entitlements; sourceTree = "<group>"; };
 		FC92CE672D31937C2C838EEE /* Pods-HKTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HKTestUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HKTestUITests/Pods-HKTestUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D28683F253D1895B9C958E7 /* Pods_HKTest.framework in Frameworks */,
+				F05E853921541ED10031A96B /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +96,7 @@
 		9E8146AD8B1E5DEC0F4CEF34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F05E853821541ED10031A96B /* HealthKit.framework */,
 				0E04FBAE3AA831A242F508E8 /* Pods_HKTest.framework */,
 				6C1C3136745482D8396DCE40 /* Pods_HKTestTests.framework */,
 				42FA2AF3B76A34CD2A15F091 /* Pods_HKTestUITests.framework */,
@@ -137,6 +142,7 @@
 		F05E850921541C8B0031A96B /* HKTest */ = {
 			isa = PBXGroup;
 			children = (
+				F05E853A21541ED10031A96B /* HKTest.entitlements */,
 				F05E850A21541C8B0031A96B /* AppDelegate.swift */,
 				F05E850C21541C8B0031A96B /* ViewController.swift */,
 				F05E850E21541C8B0031A96B /* Main.storyboard */,
@@ -236,6 +242,11 @@
 				TargetAttributes = {
 					F05E850621541C8B0031A96B = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					F05E851A21541C910031A96B = {
 						CreatedOnToolsVersion = 10.0;
@@ -533,10 +544,14 @@
 			baseConfigurationReference = E1FBFC4C3C9A07B5283DC182 /* Pods-HKTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HKTest/HKTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -549,10 +564,14 @@
 			baseConfigurationReference = E837588F3E3D743E34B69030 /* Pods-HKTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HKTest/HKTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -569,7 +588,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -587,7 +610,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -604,7 +631,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -621,7 +652,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L9T32S589G;
 				INFOPLIST_FILE = HKTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocketjourney.iosapp.HKTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
